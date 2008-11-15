@@ -1,0 +1,35 @@
+web_demo is a full fledged OTP Release using the web_* applications located at
+http://github.com/asceth and using mochiweb which can be grabbed from github
+as well.  It is designed to be used with faxien/sinan:
+
+http://www.erlware.org/erlware/index.html
+
+
+web_demo assumes you have the required dependencies in the deps/ folder as the
+lib/ folder symlinks to that folder for its applications.
+
+Personally I have symlinks inside the deps/ folder as well that point to where
+I store the applications.  The deps/ folder doesn't reflect this so you have
+the freedom to set it up as you wish.
+
+
+Make sure you build the driver in the adv_crypto application before trying
+to run this OTP release.
+
+Once you have that built and faxien and sinan installed you use these
+commands to get going:
+
+sinan build (make sure it pulls dependencies not locally installed)
+sinan dist (packages it up as a release)
+faxien install-release (tells faxien to install the release to your system)
+
+Then assuming you've added /usr/local/erlware/bin to your PATH (or wherever
+you installed it) you can simply run:
+
+web_demo
+
+
+Wait a few seconds and check the directory you ran the web_demo from, if
+no erl_crash.dump appears you should be able to browse to
+http://localhost:8000/about and get your message.  Going to other pages
+should give you a 403 error.
